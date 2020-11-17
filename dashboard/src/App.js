@@ -1,27 +1,36 @@
 import React, {Component}  from 'react';
 import {Route, Switch, withRouter} from 'react-router-dom';
 
-import Login from "./class/containers/Login/Login";
-import Logout from "./class/containers/Login/Logout";
+import Login from "./class/containers/Login";
+import Register from "./class/containers/Register";
+import Dashboard from "./class/containers/Dashboard";
 
 class App extends Component {
-  async UNSAFE_componentWillMount() {
-    this.props.history.push('/login');
-  }
+  constructor(props) {
+      super(props);
+
+      this.state = {
+        path: "/login"
+      };
+    }
+
+  //async componentDidMount() {
+  //  this.props.history.push(this.state.path);
+  //}
 
   render() {
     return (
-      <Switch>
-        <Route exact path="/login">
+      <div className="app">
+        <Route path="/">
           <Login />
         </Route>
-        <Route exact path="/logout">
-          <Logout />
+        <Route exact path="/register">
+          <Register />
         </Route>
-        <Route path="/">
-          <div>uhfiuahfizauhfaiuh</div>
+        <Route exact path="/dashboard">
+          <Dashboard />
         </Route>
-      </Switch>
+      </div>
     );
   }
 }
