@@ -1,0 +1,19 @@
+version: "3.5"
+
+services:
+  postgres:
+    image: "postgres/latest"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "dashboard"
+      PORT: 4200
+    volumes:
+      - database-data:/var/lib/postgresql/data
+      - ./structure.sql:/save/structure.sql:ro
+      - ./fill_db.sh:/save/fill_db.sh:ro
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+volumes:
+  database-data:
