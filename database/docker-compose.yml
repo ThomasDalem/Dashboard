@@ -1,12 +1,12 @@
 version: "3.5"
 
 services:
-  postgres:
-    image: "postgres/latest"
+  database:
+    image: "postgres:latest"
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "dashboard"
-      PORT: 4200
+      PORT: 5432
     volumes:
       - database-data:/var/lib/postgresql/data
       - ./structure.sql:/save/structure.sql:ro
