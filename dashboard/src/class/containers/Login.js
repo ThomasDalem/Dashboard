@@ -23,10 +23,12 @@ class Login extends Component {
         this.setState({password: event.target.value});
     }
 
-    handleLogin() {
+    handleLogin(event) {
+        this.props.history.push('/dashboard');
     }
 
-    handleLoginWithOAuth2() {
+    handleLoginWithOAuth2(event) {
+        console.log("Log in with OAuth2 !");
     }
 
     render() {

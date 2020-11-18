@@ -6,30 +6,23 @@ import Register from "./class/containers/Register";
 import Dashboard from "./class/containers/Dashboard";
 
 class App extends Component {
-  constructor(props) {
-      super(props);
-
-      this.state = {
-        path: "/login"
-      };
-    }
-
-  //async componentDidMount() {
-  //  this.props.history.push(this.state.path);
-  //}
-
   render() {
     return (
       <div className="app">
-        <Route path="/">
-          <Login />
-        </Route>
-        <Route exact path="/register">
-          <Register />
-        </Route>
-        <Route exact path="/dashboard">
-          <Dashboard />
-        </Route>
+        <Switch>
+          <Route exact path="/">
+            <Login />
+          </Route>
+          <Route exact path="/register">
+            <Register />
+          </Route>
+          <Route exact path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route exact path="/dashboard/widgets">
+            <Dashboard />
+          </Route>
+        </Switch>
       </div>
     );
   }
