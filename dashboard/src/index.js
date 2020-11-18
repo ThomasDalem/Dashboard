@@ -5,6 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from 'react-router-dom';
 
 import './styles/style.css';
+import './styles/bootstrap.css';
+import 'boxicons'
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,6 +1,24 @@
-$black: 700;
+// color
+$primary_color: #b500ff;
+$primary_color_light: #8000d1;
+$primary_color_dark: #4f0080;
+$dark_grey: #3f3f3f;
+$light_grey: #d3d3d3;
+$grey: #7a7a7a;
+$background-grey: #545454;
+
+// font weigth
+$light: 300;
+$medium: 500;
+$bold: 700;
+
+// font familly
+$font-family-base: 'open sans', Arial, sans-serif;
 
 // Import
 // ======
 // pages
 @import "app";
+@import "login";
+@import "register";
+@import "dashboard";
