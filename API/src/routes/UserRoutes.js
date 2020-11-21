@@ -1,6 +1,8 @@
-module.exports = async function (app) {
-    const controller = require("../controllers/UserController");
+const router = require('express').Router();
 
-    app.post('/user/register', controller.registerUser);
-    app.post('/user/login', controller.loginUser);
-};
+const controller = require("../controllers/UserController");
+
+router.post('/register', controller.registerUser);
+router.post('/login', controller.loginUser);
+
+module.exports = router;

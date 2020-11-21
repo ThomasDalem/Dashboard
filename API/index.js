@@ -1,19 +1,30 @@
+const port = process.env.PORT || 4200;
 const express = require('express');
 const app = express();
-const port = process.env.PORT | 4200;
-const bodyParser = require("body-parser");
-const cors = require("cors")
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const passport = require('passport');
+const dotenv = require('dotenv');
+const models = require('./src/models');
+const initModels = require('./src/models/init-models');
 
-app.use(cors());
+dotenv.config();
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use('*', cors());
+app.use(passport.initialize());
 
-require('./src/routes/UserRoutes')(app);
+app.use('/user', require('./src/routes/UserRoutes'));
+app.use('/weather-widget', require('./src/routes/WeatherWidgetRoutes'));
 
 app.get('/', (req, res) => {
-    res.send('bonjour');
+  res.send('bonjour');
 });
 
-app.listen(port, () => {
+initModels(models.sequelize);
+models.sequelize.sync().then(() => {
+  app.listen(port, () => {
     console.log(`Dashboard API running on port ${port}.`);
+  });
 });
