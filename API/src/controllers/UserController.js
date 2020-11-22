@@ -25,7 +25,7 @@ exports.loginUser = async function (req, res) {
     .findOne({ where: { username: req.body.username } })
     .then((user) => {
       if (!user) {
-        res.status(404);
+        res.status(404).end();
         return;
       }
       if (!req.body.password == user.password) {
