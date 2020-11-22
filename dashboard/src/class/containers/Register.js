@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import {withRouter, Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import axios from 'axios';
+
+import {setUser, setToken} from '../reducers/userActionCreators';
 
 class Register extends Component {
     constructor(props) {
@@ -23,8 +27,21 @@ class Register extends Component {
         this.setState({password: event.target.value});
     }
 
-    handleSubmit(event) {
-        this.props.history.push('/');
+    async handleSubmit(event) {
+        event.preventDefault();
+        const {username, password} = this.state;
+        await axios.post("http://localhost:4200/user/register", {username: username, password: password}).then((response) => {
+            if (response.status === 200 && response.statusText === "OK")
+                for (let key in response.data)
+                    if (key === "token") {
+                        let user = {username: this.state.username};
+                        this.props.setUser(user);
+                        this.props.setToken(response.data[key]);
+                        console.log(this.props.user.username);
+                        console.log(this.props.user.token);
+                        this.props.history.push('/dashboard');
+                    }
+        }).catch((error) => console.log(error));
     }
 
     render() {
@@ -56,4 +73,15 @@ class Register extends Component {
     }
 }
 
-export default withRouter(Register);
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    }
+}
+
+const mapDispatchToProps = {
+    setUser,
+    setToken
+}
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Register));
