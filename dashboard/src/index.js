@@ -3,16 +3,25 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from 'react-router-dom';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+
+import reducerCombiner from './class/reducers'
 
 import './styles/style.css';
 import './styles/bootstrap.css';
 import 'boxicons'
 
+
+let store = createStore(reducerCombiner);
+
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
