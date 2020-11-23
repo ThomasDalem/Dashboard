@@ -9,10 +9,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
     city: {
       type: DataTypes.STRING(100),
       allowNull: true

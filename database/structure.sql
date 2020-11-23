@@ -8,7 +8,6 @@ CREATE TABLE public."user" (
 
 CREATE TABLE weather_widget (
     id SERIAL,
-    user_id INTEGER,
     city VARCHAR(100),
     postal_code VARCHAR(10),
     celcius BOOLEAN DEFAULT true,
