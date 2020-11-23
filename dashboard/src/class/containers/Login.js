@@ -45,7 +45,9 @@ class Login extends Component {
                         this.props.setToken(response.data[key]);
                         this.props.history.push('/dashboard');
                     }
-        }).catch((error) => console.log(error));
+        }).catch((error) => {
+            this.setState({log_error: true});
+        });
     }
 
     async handleLoginWithOAuth2(event) {
@@ -58,6 +60,11 @@ class Login extends Component {
                 <div className="login-center">
                     <h1 className="h1">DASHBOARD</h1>
                     <div className="login-card">
+                        {
+                            this.state.log_error === true
+                            ? <div className="log-error">Username or Password invalid.</div>
+                            : null
+                        }
                         <form className="login-form" value={this.state.value} onSubmit={this.handleLogin}>
                             <div className="form-group">
                                 <label htmlFor="username">Username</label>

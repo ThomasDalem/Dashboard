@@ -5,6 +5,7 @@ class ChooseWidgets extends Component {
   render() {
     return (
         <div>
+          NON
         </div>
     );
   }
