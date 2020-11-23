@@ -3,14 +3,17 @@ import {withRouter, Switch, Route} from 'react-router-dom';
 
 import Navbar from '../components/Navbar';
 import ChooseWidgets from '../components/ChooseWidgets';
-import TimeZoneWidget from '../widgets/TimeZoneWidget';
+import TimeZoneService from '../services/TimeZoneService';
+import MeteoService from '../services/MeteoService';
+import MoneyService from '../services/MoneyConverterService';
+import YoutubeService from '../services/YoutubeService';
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      widgets: [<TimeZoneWidget />, <TimeZoneWidget />]
+      widgets: [<TimeZoneService />, <MeteoService />, <YoutubeService />, <MoneyService />]
     };
   }
 
