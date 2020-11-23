@@ -2,34 +2,42 @@
 
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('user', {
+  return sequelize.define('weather_widget', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    username: {
-      type: DataTypes.STRING(40),
-      allowNull: false
-    },
-    password: {
+    city: {
       type: DataTypes.STRING(100),
-      allowNull: false
+      allowNull: true
     },
-    is_admin: {
+    postal_code: {
+      type: DataTypes.STRING(10),
+      allowNull: true
+    },
+    celcius: {
       type: DataTypes.BOOLEAN,
       allowNull: true,
-      defaultValue: false
+      defaultValue: true
+    },
+    id_user: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'user',
+        key: 'id'
+      }
     }
   }, {
     sequelize,
-    tableName: 'user',
+    tableName: 'weather_widget',
     schema: 'public',
     timestamps: false,
     indexes: [
       {
-        name: "user_pk",
+        name: "weather_widget_pk",
         unique: true,
         fields: [
           { name: "id" },

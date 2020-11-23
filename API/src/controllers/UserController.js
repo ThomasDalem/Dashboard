@@ -1,7 +1,7 @@
 const db = require("../models");
 const generateJWT = require("../config/generateJWT");
 
-exports.registerUser = async function (req, res) {
+exports.registerUser = async (req, res) => {
   if (!req.body.username || !req.body.password) {
     res.status(400).end();
     return;
@@ -13,14 +13,13 @@ exports.registerUser = async function (req, res) {
   const jwt = generateJWT(user);
 
   res.json({
-    success: true,
     user: user.toJSON(),
     token: jwt.token,
     expiresIn: jwt.expires,
   });
 };
 
-exports.loginUser = async function (req, res) {
+exports.loginUser = async (req, res) => {
   db.user
     .findOne({ where: { username: req.body.username } })
     .then((user) => {
@@ -28,7 +27,7 @@ exports.loginUser = async function (req, res) {
         res.status(404).end();
         return;
       }
-      if (!req.body.password == user.password) {
+      if (req.body.password !== user.password) {
         res
           .status(401)
           .json({ success: false, message: "Wrong password for this user" });
@@ -36,7 +35,6 @@ exports.loginUser = async function (req, res) {
       }
       const jwt = generateJWT(user);
       res.json({
-        success: true,
         user: user,
         token: jwt.token,
         expiresIn: jwt.expires,
