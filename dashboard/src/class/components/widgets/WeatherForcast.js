@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 
-class MeteoService extends Component {
+class WeatherForcast extends Component {
   render() {
     return (
         <div className="card">
-            <div className="meteo-service">
-                Méteo
+            <div className="weather-forcast-widget">
+                WeatherForcast
             </div>
         </div>
     );
   }
 }
 
-export default withRouter(MeteoService);
+export default withRouter(WeatherForcast);

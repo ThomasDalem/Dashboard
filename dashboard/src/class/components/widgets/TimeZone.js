@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 
-class TimeZoneService extends Component {
+class TimeZone extends Component {
   constructor(props) {
     super(props);
 
@@ -32,7 +32,7 @@ class TimeZoneService extends Component {
   render() {
     return (
         <div className="card">
-            <div className="time-service">
+            <div className="time-widget">
                 <div className="info">
                     <div>
                         <div className="image">Image</div>
@@ -53,4 +53,4 @@ class TimeZoneService extends Component {
   }
 }
 
-export default withRouter(TimeZoneService);
+export default withRouter(TimeZone);

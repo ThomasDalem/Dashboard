@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 
-class MoneyConverterService extends Component {
+class YoutubeNbView extends Component {
   render() {
     return (
         <div className="card">
-            <div className="money-service">
-                Money
+            <div className="youtube-widget">
+                Youtube
             </div>
         </div>
     );
   }
 }
 
-export default withRouter(MoneyConverterService);
+export default withRouter(YoutubeNbView);
