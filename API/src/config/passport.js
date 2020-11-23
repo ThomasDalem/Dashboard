@@ -1,11 +1,11 @@
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractStrategy = require("passport-jwt").ExtractJwt;
-const db = require('../models');
-const fs = require('fs');
-const path = require('path');
+const db = require("../models");
+const fs = require("fs");
+const path = require("path");
 
-const pathToKey = path.join(__dirname, '../..', 'id_rsa_pub.pem');
-const PUBLIC_KEY = fs.readFileSync(pathToKey, 'utf8');
+const pathToKey = path.join(__dirname, "../..", "id_rsa_pub.pem");
+const PUBLIC_KEY = fs.readFileSync(pathToKey, "utf8");
 
 const options = {
   jwtFromRequest: ExtractStrategy.fromAuthHeaderAsBearerToken(),
@@ -30,7 +30,7 @@ module.exports = (passport) => {
           done(error, null);
         });
     })
-  )
+  );
 
   passport.serializeUser((user, done) => {
     done(null, user.id);
