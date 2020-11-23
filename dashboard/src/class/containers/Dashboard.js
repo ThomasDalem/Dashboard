@@ -2,10 +2,18 @@ import React, {Component} from 'react';
 import {withRouter, Switch, Route} from 'react-router-dom';
 
 import Navbar from '../components/Navbar';
-import MyWidgets from '../components/MyWidgets';
 import ChooseWidgets from '../components/ChooseWidgets';
+import TimeZoneWidget from '../widgets/TimeZoneWidget';
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      widgets: [<TimeZoneWidget />, <TimeZoneWidget />]
+    };
+  }
+
   render() {
     return (
         <React.Fragment>
@@ -13,10 +21,12 @@ class Dashboard extends Component {
           <main className="dashboard-page">
             <Switch>
               <Route exact path="/dashboard">
-                <MyWidgets />
+                <div className="cards-field">
+                  {this.state.widgets}
+                </div>
               </Route>
               <Route exact path="/dashboard/widgets">
-                <ChooseWidgets />
+                <ChooseWidgets widgets={this.state.widgets}/>
               </Route>
             </Switch>
           </main>
