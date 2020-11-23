@@ -7,6 +7,8 @@ require('../config/passport')(passport);
 
 router.use(passport.authenticate('jwt', { session: false }));
 
-router.post('/change-city', WeatherWidgetController.changeCity);
+router.post('/add-widget', WeatherWidgetController.addWidget);
+router.post('/change-params', WeatherWidgetController.changeParams);
+router.get('/', WeatherWidgetController.getWidgets);
 
 module.exports = router;

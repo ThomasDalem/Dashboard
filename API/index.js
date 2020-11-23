@@ -12,7 +12,7 @@ dotenv.config();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use('*', cors());
+app.use(cors());
 app.use(passport.initialize());
 
 app.use('/user', require('./src/routes/UserRoutes'));
