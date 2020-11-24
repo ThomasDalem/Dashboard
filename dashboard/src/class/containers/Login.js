@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {withRouter, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import {GoogleLogin} from 'react-google-login';
 
 import {setUser, setToken, removeUser} from '../reducers/userActionCreators';
 
@@ -12,11 +13,13 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
-            log_error: false
+            log_error: false,
+
         };
 
         this.handleLogin = this.handleLogin.bind(this);
-        this.handleLoginWithOAuth2 = this.handleLoginWithOAuth2.bind(this);
+        this.googleResponseOnFailure = this.googleResponseOnFailure.bind(this);
+        this.googleResponseOnSuccess = this.googleResponseOnSuccess.bind(this);
         this.handleChangeUsername = this.handleChangeUsername.bind(this);
         this.handleChangePassword = this.handleChangePassword.bind(this);
     }
@@ -50,9 +53,36 @@ class Login extends Component {
         });
     }
 
-    async handleLoginWithOAuth2(event) {
-        console.log("Log in with OAuth2 !");
-    }
+    async googleResponseOnSuccess(res) {
+        console.log('[Login Success] res:', res.profileObj);
+        this.setState({username: res.profileObj.email, password: res.profileObj.googleId});
+        const {username, password} = this.state;
+        await axios.post("http://localhost:4200/user/login", {username: username, password: password}).then((response) => {
+            if (response.status === 200 && response.statusText === "OK")
+                for (let key in response.data)
+                    if (key === "token") {
+                        let user = {username: this.state.username};
+                        this.props.setUser(user);
+                        this.props.setToken(response.data[key]);
+                        this.props.history.push('/dashboard');
+                    }
+        }).catch(async (error) => {
+            await axios.post("http://localhost:4200/user/register", {username: username, password: password}).then((response) => {
+                if (response.status === 200 && response.statusText === "OK")
+                    for (let key in response.data)
+                        if (key === "token") {
+                            let user = {username: this.state.username};
+                            this.props.setUser(user);
+                            this.props.setToken(response.data[key]);
+                            this.props.history.push('/dashboard');
+                        }
+            }).catch((error) => console.log(error));
+        });
+    };
+
+    googleResponseOnFailure(res) {
+        console.log('[Login Failure] res:', res.profileObj);
+    };
 
     render() {
         return (
@@ -78,7 +108,14 @@ class Login extends Component {
                         </form>
                         <div className="bottom-card">
                             <Link to={{pathname: "/register"}} className="a">Create new account</Link>
-                            <button className="btn btn-custom" onClick={this.handleLoginWithOAuth2}>Login with OAuth2</button>
+                            <GoogleLogin
+                                clientId="131598559484-1oqpjof5et6t9o3iuqvplv5etul788hc.apps.googleusercontent.com"
+                                buttonText="Login with Google"
+                                onSuccess={this.googleResponseOnSuccess}
+                                onFailure={this.googleResponseOnFailure}
+                                cookiePolicy={'single_host_origin'}
+                                className="btn btn-custom"
+                            />
                         </div>
                     </div>
                 </div>
