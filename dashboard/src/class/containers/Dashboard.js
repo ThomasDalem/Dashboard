@@ -24,8 +24,10 @@ class Dashboard extends Component {
           <main className="dashboard-page">
             <Switch>
               <Route exact path="/dashboard">
-                <div className="cards-field">
-                  {this.state.widgets}
+                <div className="fill-height">
+                  <div className="cards-field">
+                    {this.state.widgets}
+                  </div>
                 </div>
               </Route>
               <Route exact path="/dashboard/widgets">
