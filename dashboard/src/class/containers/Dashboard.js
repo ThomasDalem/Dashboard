@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 import ChooseWidgets from '../components/ChooseWidgets';
 import TimeZone from '../components/widgets/TimeZone';
 import Weather from '../components/widgets/Weather';
-import WeatherForcast from '../components/widgets/WeatherForcast';
+import WeatherForecast from '../components/widgets/WeatherForecast';
 import Youtube from '../components/widgets/YoutubeNbView';
 
 class Dashboard extends Component {
@@ -13,7 +13,7 @@ class Dashboard extends Component {
     super(props);
 
     this.state = {
-      widgets: []
+      widgets: [<Weather />]
     };
   }
 

@@ -2,10 +2,11 @@
 $primary_color: #b500ff;
 $primary_color_light: #8000d1;
 $primary_color_dark: #4f0080;
-$dark_grey: #3f3f3f;
+$dark_grey: #191633;
 $light_grey: #d3d3d3;
 $grey: #7a7a7a;
 $background-grey: #545454;
+$card-color: #2d325d;
 
 // font weigth
 $light: 300;
@@ -23,3 +24,4 @@ $font-family-base: 'open sans', Arial, sans-serif;
 @import "register";
 @import "dashboard";
 @import "add_services";
+@import "weather_service";

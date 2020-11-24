@@ -1,32 +1,18 @@
 .dashboard-page
-    position: fixed
-    top: 0
-    left: 210px
+    margin-left: 210px;
     height: 100vh
     .cards-field
         display: flex
-        flex-direction: row
         flex-wrap: wrap
-        justify-content: start
+        justify-content: space-evenly
         overflow: auto
-        min-width: auto
-        margin: 0 0 0 6px
-        height: 100vh
-        .card
-            margin: 6px
-            min-width: 400px
-            height: 300px
-            background: linear-gradient(160deg, rgba(255,243,212,1) 0%, rgba(215,127,255,1) 100%)
-            box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.3)
-            border-radius: 5px
-            transition: .3s
 
 .nav-bar
     position: fixed
     top: 0
     left: 0
     width: 210px
-    height: 100vh
+    height: 100%
     overflow-y: auto
     background-color: $primary-color-dark
     .nav-list
@@ -71,3 +57,9 @@
 
     .nav-list a:last-child
         margin-top: auto
+
+.widgetsBody
+    display: flex
+    flex-wrap: wrap
+    flex-grow: 2
+    justify-content: space-around
