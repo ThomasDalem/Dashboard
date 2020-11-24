@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import {ToastsContainer, ToastsStore, ToastsContainerPosition} from 'react-toasts';
 import TimeZone from '../components/widgets/TimeZone';
 import Weather from '../components/widgets/Weather';
-import WeatherForcast from '../components/widgets/WeatherForcast';
+import WeatherForecast from '../components/widgets/WeatherForecast';
 import YoutubeNbViews from '../components/widgets/YoutubeNbViews';
 import YoutubeNbSubscibers from '../components/widgets/YoutubeNbSubscibers';
 import YoutubeLastVideo from '../components/widgets/YoutubeLastVideo';
@@ -21,7 +21,7 @@ class ChooseWidgets extends Component {
   displaySuccessToast(id) {
     switch(id) {
       case 1: ToastsStore.success("Weather widget added"); break;
-      case 2: ToastsStore.success("Weather Forcast widget added"); break;
+      case 2: ToastsStore.success("Weather Forecast widget added"); break;
       case 3: ToastsStore.success("Time Zone widget added"); break;
       case 4: ToastsStore.success("Youtube Views widget added"); break;
       case 5: ToastsStore.success("Youtube Last Video widget added"); break;
@@ -33,7 +33,7 @@ class ChooseWidgets extends Component {
   displayFailToast(id) {
     switch(id) {
       case 1: ToastsStore.error("Weather widget not added"); break;
-      case 2: ToastsStore.error("Weather Forcast widget not added"); break;
+      case 2: ToastsStore.error("Weather Forecast widget not added"); break;
       case 3: ToastsStore.error("Time Zone widget not added"); break;
       case 4: ToastsStore.error("Youtube Views widget not added"); break;
       case 5: ToastsStore.error("Youtube Last Video widget not added"); break;
@@ -45,7 +45,7 @@ class ChooseWidgets extends Component {
   addWidgetToList(id) {
     switch(id) {
       case 1: this.props.widgets.push(<Weather />); break;
-      case 2: this.props.widgets.push(<WeatherForcast />); break;
+      case 2: this.props.widgets.push(<WeatherForecast />); break;
       case 3: this.props.widgets.push(<TimeZone />); break;
       case 4: this.props.widgets.push(<YoutubeNbViews />); break;
       case 5: this.props.widgets.push(<YoutubeLastVideo />); break;
@@ -96,7 +96,7 @@ class ChooseWidgets extends Component {
                         <box-icon name="cloud-snow" color="white" size="lg"></box-icon>
                       </div>
                       <h3 className="title-widget">
-                        Weather Forcast
+                        Weather Forecast
                       </h3>
                     </div>
                     <div className="down-side">
