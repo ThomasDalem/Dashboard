@@ -37,8 +37,6 @@ class Register extends Component {
                         let user = {username: this.state.username};
                         this.props.setUser(user);
                         this.props.setToken(response.data[key]);
-                        console.log(this.props.user.username);
-                        console.log(this.props.user.token);
                         this.props.history.push('/dashboard');
                     }
         }).catch((error) => console.log(error));

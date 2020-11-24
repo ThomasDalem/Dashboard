@@ -60,8 +60,16 @@ function Weather(props) {
 
 const mapStateToProps = (state) => {
   return {
+<<<<<<< HEAD
+      user: state.user
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(Weather));
+=======
     user: state.user,
   };
 };
 
 export default withRouter(connect(mapStateToProps)(Weather));
+>>>>>>> 9f7760d426bfb61f194fa002675d852df1863fab

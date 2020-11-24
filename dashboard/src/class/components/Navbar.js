@@ -3,10 +3,6 @@ import {withRouter, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 class Navbar extends Component {
-    componentWillMount() {
-        console.log(this.props.user.username);
-    }
-
     render() {
         return (
             <aside className="nav-bar" id="nav-bar">

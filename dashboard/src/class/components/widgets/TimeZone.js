@@ -26,7 +26,7 @@ class TimeZone extends Component {
   }
 
   updateClock() {
-    setInterval(() => this.setState({second: this.state.second + 1}), 1000);
+    //setInterval(() => this.setState({test: moment(Date.now()).tz("Europe/Paris").format()}), 1000);
   }
 
   render() {
