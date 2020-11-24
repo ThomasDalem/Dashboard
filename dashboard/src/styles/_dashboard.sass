@@ -1,8 +1,13 @@
 .dashboard-page
-    position: fixed
-    top: 0
-    left: 210px
+    margin-left: 210px;
     height: 100vh
+<<<<<<< HEAD
+    .cards-field
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-evenly
+        overflow: auto
+=======
     .fill-height
         height: 100vh
         overflow: auto
@@ -21,13 +26,14 @@
                 box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.3)
                 border-radius: 5px
                 transition: .3s
+>>>>>>> 5909577915054298126518bd03d38f45ed1dac83
 
 .nav-bar
     position: fixed
     top: 0
     left: 0
     width: 210px
-    height: 100vh
+    height: 100%
     overflow-y: auto
     background-color: $primary-color-dark
     .nav-list
@@ -72,3 +78,9 @@
 
     .nav-list a:last-child
         margin-top: auto
+
+.widgetsBody
+    display: flex
+    flex-wrap: wrap
+    flex-grow: 2
+    justify-content: space-around
