@@ -1,0 +1,526 @@
+.app {
+  min-height: 100vh;
+  background-color: #191633;
+}
+
+.a {
+  font-size: 14px;
+}
+
+.a:hover {
+  cursor: pointer;
+}
+
+.login-page {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-repeat: repeat;
+  background-image: url("https://wallpaperaccess.com/full/1260097.jpg");
+}
+
+.login-page .login-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 10px;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.login-page .login-center h1 {
+  font-size: 70px;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.login-page .login-center .login-card {
+  font-size: 20px;
+  padding: 10px;
+  padding-top: 20px;
+  margin: 10px;
+  -webkit-box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.3);
+  background-color: white;
+  border-radius: 4px;
+}
+
+.login-page .login-center .login-card .log-error {
+  color: red;
+  text-align: center;
+}
+
+.login-page .login-center .login-card .login-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-page .login-center .login-card .login-form .btn-custom {
+  background-color: #b500ff;
+  color: white;
+}
+
+.login-page .login-center .login-card .login-form .btn-custom:hover, .login-page .login-center .login-card .login-form .btn-custom:focus {
+  background-color: #4f0080;
+}
+
+.login-page .login-center .login-card .bottom-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 8px;
+}
+
+.login-page .login-center .login-card .bottom-card .a {
+  padding: 8px;
+  border-right: 1px solid black;
+}
+
+.login-page .login-center .login-card .bottom-card .btn-custom {
+  background-color: #b500ff;
+  color: white;
+  margin: 8px;
+}
+
+.login-page .login-center .login-card .bottom-card .btn-custom:hover, .login-page .login-center .login-card .bottom-card .btn-custom:focus {
+  background-color: #4f0080;
+}
+
+.register-page {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-repeat: repeat;
+  background-image: url("https://wallpaperaccess.com/full/1260097.jpg");
+}
+
+.register-page .register-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 10px;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.register-page .register-center h1 {
+  font-size: 70px;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.register-page .register-center .back-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.register-page .register-center .back-card .back-btn {
+  margin: 10px;
+  width: 16px;
+  height: 16px;
+}
+
+.register-page .register-center .back-card .register-card {
+  font-size: 20px;
+  padding: 20px;
+  padding-top: 20px;
+  margin: 10px;
+  -webkit-box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.3);
+  background-color: white;
+  border-radius: 4px;
+}
+
+.register-page .register-center .back-card .register-card .register-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.register-page .register-center .back-card .register-card .register-form .btn-custom {
+  background-color: #b500ff;
+  color: white;
+}
+
+.register-page .register-center .back-card .register-card .register-form .btn-custom:hover, .register-page .register-center .back-card .register-card .register-form .btn-custom:focus {
+  background-color: #4f0080;
+}
+
+.dashboard-page {
+  margin-left: 210px;
+  height: 100vh;
+}
+
+.dashboard-page .fill-height {
+  height: 100vh;
+  overflow: auto;
+}
+
+.dashboard-page .fill-height .cards-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  min-width: auto;
+  margin: 0 0 0 6px;
+}
+
+.dashboard-page .fill-height .cards-field .card {
+  margin: 6px;
+  min-width: 400px;
+  height: 300px;
+  background: linear-gradient(160deg, #fff3d4 0%, #d77fff 100%);
+  -webkit-box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 210px;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #4f0080;
+}
+
+.nav-bar .nav-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+}
+
+.nav-bar .nav-list .username {
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 14px 0 0 0;
+  padding: 8px 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
+  border: 2px solid #8000d1;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+.nav-bar .nav-list .nav-link {
+  margin: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px solid #8000d1;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.3);
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.nav-bar .nav-list .nav-link .nav-icon {
+  margin-top: 8px;
+  width: 56px;
+}
+
+.nav-bar .nav-list .nav-link .nav-name {
+  margin-left: 8px;
+  font-size: 16px;
+  color: white;
+  font-weight: 700;
+}
+
+.nav-bar .nav-list .nav-link:hover, .nav-bar .nav-list .nav-link:focus {
+  border: 2px solid #b500ff;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.nav-bar .nav-list .nav-link:focus {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.nav-bar .nav-list a:last-child {
+  margin-top: auto;
+}
+
+.widgetsBody {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.add-widget {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: auto;
+  height: 100vh;
+}
+
+.add-widget h1 {
+  color: white;
+  font-size: 40px;
+  font-weight: 700;
+  margin: 10px;
+  padding: 0px 10px;
+  -webkit-box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.3);
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 190px;
+}
+
+.add-widget .fill-height {
+  height: 100vh;
+  overflow: auto;
+}
+
+.add-widget .fill-height .card-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  overflow: auto;
+  min-width: 200px;
+  margin-left: 6px;
+}
+
+.add-widget .fill-height .card-field .btn-github {
+  margin: 12px;
+}
+
+.add-widget .fill-height .card-field .service {
+  margin: 30px 0 0 6px;
+  overflow: auto;
+}
+
+.add-widget .fill-height .card-field .service .service-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border-bottom: 2px solid white;
+  margin-bottom: 6px;
+}
+
+.add-widget .fill-height .card-field .service .service-title .color-github-bg {
+  background-color: white;
+  border-radius: 50%;
+  margin-bottom: 4px;
+}
+
+.add-widget .fill-height .card-field .service .service-title .service-name {
+  color: white;
+  font-size: 34px;
+  margin: 4px 0 0 10px;
+}
+
+.add-widget .fill-height .card-field .service .service-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.add-widget .fill-height .card-field .service .service-content .card {
+  margin: 6px;
+  min-width: auto;
+  height: 110px;
+  background: linear-gradient(160deg, #fff3d4 0%, #d77fff 100%);
+  -webkit-box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.add-widget .fill-height .card-field .service .service-content .card .up-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 4px;
+  border-bottom: 2px solid black;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.add-widget .fill-height .card-field .service .service-content .card .up-side .title-widget {
+  color: black;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 8px 8px 8px;
+}
+
+.add-widget .fill-height .card-field .service .service-content .card .down-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add-widget .fill-height .card-field .service .service-content .card .down-side .btn-add {
+  margin-top: 6px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.3);
+  -webkit-transition: .3s;
+  transition: .3s;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.add-widget .fill-height .card-field .service .service-content .card .down-side .btn-add:hover, .add-widget .fill-height .card-field .service .service-content .card .down-side .btn-add:focus {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.add-widget .fill-height .card-field .service .service-content .card .down-side .btn-add:focus {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.toast-cst {
+  height: 60px;
+  width: 240px;
+}
+
+.weather-widget {
+  background-color: #2d325d;
+  color: white;
+  padding: 20px;
+  border-radius: 3px;
+}
+
+.weather-forecast-widget {
+  background-color: #2d325d;
+  color: white;
+  border-radius: 3px;
+  padding: 50px;
+}
+/*# sourceMappingURL=style.css.map */

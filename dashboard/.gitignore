@@ -21,7 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# compiled style
-/src/styles/style.css
-/src/styles/style.css.map

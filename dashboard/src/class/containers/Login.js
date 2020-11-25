@@ -54,7 +54,6 @@ class Login extends Component {
     }
 
     async googleResponseOnSuccess(res) {
-        console.log('[Login Success] res:', res.profileObj);
         this.setState({username: res.profileObj.email, password: res.profileObj.googleId});
         const {username, password} = this.state;
         await axios.post("http://localhost:4200/user/login", {username: username, password: password}).then((response) => {
@@ -81,7 +80,7 @@ class Login extends Component {
     };
 
     googleResponseOnFailure(res) {
-        console.log('[Login Failure] res:', res.profileObj);
+        console.log("Connection fail !");
     };
 
     render() {
