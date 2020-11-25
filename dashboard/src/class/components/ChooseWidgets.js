@@ -1,31 +1,37 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {ToastsContainer, ToastsStore, ToastsContainerPosition} from 'react-toasts';
-import TimeZone from '../components/widgets/TimeZone';
-import Weather from '../components/widgets/Weather';
-import WeatherForcast from '../components/widgets/WeatherForcast';
-import YoutubeNbViews from '../components/widgets/YoutubeNbViews';
-import YoutubeNbSubscibers from '../components/widgets/YoutubeNbSubscibers';
-import YoutubeLastVideo from '../components/widgets/YoutubeLastVideo';
+import GitHubLogin from 'react-github-login';
+import MoneyConverter from './widgets/MoneyConverter';
+import Weather from './widgets/Weather';
+import WeatherForecast from './widgets/WeatherForecast';
+import GithubUserRepos from './widgets/GithubUserRepos';
+import GithubInfosUser from './widgets/GithubInfosUser';
+import GithubSearchUsers from './widgets/GithubSearchUsers';
 
 class ChooseWidgets extends Component {
   constructor(props) {
       super(props);
 
+      this.state = {
+        githubServiceEnable: true // false / get depuis les providers
+      };
       this.handleAddService = this.handleAddService.bind(this);
       this.displaySuccessToast = this.displaySuccessToast.bind(this);
       this.displayFailToast = this.displayFailToast.bind(this);
       this.addWidgetToList = this.addWidgetToList.bind(this);
+      this.connectToGithubSuccess = this.connectToGithubSuccess.bind(this);
+      this.connectToGithubFailure = this.connectToGithubFailure.bind(this);
   }
 
   displaySuccessToast(id) {
     switch(id) {
       case 1: ToastsStore.success("Weather widget added"); break;
-      case 2: ToastsStore.success("Weather Forcast widget added"); break;
+      case 2: ToastsStore.success("Weather Forecast widget added"); break;
       case 3: ToastsStore.success("Time Zone widget added"); break;
-      case 4: ToastsStore.success("Youtube Views widget added"); break;
-      case 5: ToastsStore.success("Youtube Last Video widget added"); break;
-      case 6: ToastsStore.success("Youtube Subscribes widget added"); break;
+      case 4: ToastsStore.success("Github Search Users widget added"); break;
+      case 5: ToastsStore.success("Github User Repos widget added"); break;
+      case 6: ToastsStore.success("Github Infos User widget added"); break;
       default: ToastsStore.success("Unknown widget added");
     }
   }
@@ -33,11 +39,11 @@ class ChooseWidgets extends Component {
   displayFailToast(id) {
     switch(id) {
       case 1: ToastsStore.error("Weather widget not added"); break;
-      case 2: ToastsStore.error("Weather Forcast widget not added"); break;
+      case 2: ToastsStore.error("Weather Forecast widget not added"); break;
       case 3: ToastsStore.error("Time Zone widget not added"); break;
-      case 4: ToastsStore.error("Youtube Views widget not added"); break;
-      case 5: ToastsStore.error("Youtube Last Video widget not added"); break;
-      case 6: ToastsStore.error("Youtube Subscribes widget not added"); break;
+      case 4: ToastsStore.error("Github Search Users widget not added"); break;
+      case 5: ToastsStore.error("Github User Repos widget not added"); break;
+      case 6: ToastsStore.error("Github Infos User widget not added"); break;
       default: ToastsStore.error("Unknown widget not added");
     }
   }
@@ -45,11 +51,11 @@ class ChooseWidgets extends Component {
   addWidgetToList(id) {
     switch(id) {
       case 1: this.props.widgets.push(<Weather />); break;
-      case 2: this.props.widgets.push(<WeatherForcast />); break;
-      case 3: this.props.widgets.push(<TimeZone />); break;
-      case 4: this.props.widgets.push(<YoutubeNbViews />); break;
-      case 5: this.props.widgets.push(<YoutubeLastVideo />); break;
-      case 6: this.props.widgets.push(<YoutubeNbSubscibers />); break;
+      case 2: this.props.widgets.push(<WeatherForecast />); break;
+      case 3: this.props.widgets.push(<MoneyConverter />); break;
+      case 4: this.props.widgets.push(<GithubSearchUsers />); break;
+      case 5: this.props.widgets.push(<GithubUserRepos />); break;
+      case 6: this.props.widgets.push(<GithubInfosUser />); break;
       default: return;
     }
   }
@@ -58,6 +64,15 @@ class ChooseWidgets extends Component {
     this.addWidgetToList(id);
     this.displaySuccessToast(id);
     //faire la requete: si elle success -> addWidget and display successToast | sinon display failToast
+  }
+
+  connectToGithubSuccess(response) {
+    // request to enable add the github sevice
+    this.setState({githubServiceEnable: true});
+  }
+
+  connectToGithubFailure(response) {
+    console.log("Connection fail !");
   }
 
   render() {
@@ -96,7 +111,7 @@ class ChooseWidgets extends Component {
                         <box-icon name="cloud-snow" color="white" size="lg"></box-icon>
                       </div>
                       <h3 className="title-widget">
-                        Weather Forcast
+                        Weather Forecast
                       </h3>
                     </div>
                     <div className="down-side">
@@ -109,20 +124,20 @@ class ChooseWidgets extends Component {
               <div className="service">
                 <div className="service-title">
                   <div>
-                    <box-icon name="time-five" type="solid" color="white" size="lg"></box-icon>
+                    <box-icon name="dollar-circle" type="solid" color="yellow" size="lg"></box-icon>
                   </div>
                   <h2 className="service-name">
-                    Time
+                    Money Converter
                   </h2>
                 </div>
                 <div className="service-content">
                   <div className="card">
                     <div className="up-side">
                       <div>
-                        <box-icon name="time" color="black" size="lg"></box-icon>
+                        <box-icon name="dollar" color="green" size="lg"></box-icon>
                       </div>
                       <h3 className="title-widget">
-                        Time Zone
+                        Money Converter
                       </h3>
                     </div>
                     <div className="down-side">
@@ -134,21 +149,29 @@ class ChooseWidgets extends Component {
 
               <div className="service">
                 <div className="service-title">
-                    <div>
-                      <box-icon type="logo" name="youtube" color="red" size="lg"></box-icon>
+                    <div className='color-github-bg'>
+                      <box-icon type="logo" name="github" color="black" size="lg"></box-icon>
                     </div>
                     <h2 className="service-name">
-                      Youtube
+                      GitHub
                     </h2>
+                    <div className="btn-github">
+                      <GitHubLogin
+                        clientId="d07e330f84e825a065f1"
+                        redirectUri=""
+                        onSuccess={this.connectToGithubSuccess}
+                        onFailure={this.connectToGithubFailure}/>
+                      </div>
                   </div>
+                  {this.state.githubServiceEnable === true ?
                   <div className="service-content">
                     <div className="card">
                       <div className="up-side">
                         <div>
-                          <box-icon name="glasses" color="black" size="lg"></box-icon>
+                          <box-icon name="search-alt-2" color="black" size="lg"></box-icon>
                         </div>
                         <h3 className="title-widget">
-                          Youtube Views
+                          GitHub Search Users
                         </h3>
                       </div>
                       <div className="down-side">
@@ -158,10 +181,10 @@ class ChooseWidgets extends Component {
                     <div className="card">
                       <div className="up-side">
                         <div>
-                          <box-icon type="solid" name="movie-play" color="red" size="lg"></box-icon>
+                          <box-icon name="git-repo-forked" color="black" size="lg"></box-icon>
                         </div>
                         <h3 className="title-widget">
-                          Youtube Last Video
+                          GitHub User Repos
                         </h3>
                       </div>
                       <div className="down-side">
@@ -171,10 +194,10 @@ class ChooseWidgets extends Component {
                     <div className="card">
                       <div className="up-side">
                         <div>
-                          <box-icon name="street-view" color="blue" size="lg"></box-icon>
+                          <box-icon name="user-account" type="solid" color="black" size="lg"></box-icon>
                         </div>
                         <h3 className="title-widget">
-                          Youtube Subscribers
+                          GitHub Infos User
                         </h3>
                       </div>
                       <div className="down-side">
@@ -182,6 +205,7 @@ class ChooseWidgets extends Component {
                       </div>
                     </div>
                 </div>
+                : null}
               </div>
             </div>
           </div>
