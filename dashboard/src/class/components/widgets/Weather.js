@@ -12,7 +12,10 @@ function Weather(props) {
   const [iconID, setIconID] = useState(
     "https://openweathermap.org/img/wn/10d@2x.png"
   );
+  const [isChangingCity, setIsChangingCity] = useState(false);
   const [userParams, setUserParams] = useState({});
+  const [city, setCity] = useState("");
+  let cityValue = "";
 
   useEffect(() => {
     axios
@@ -52,12 +55,55 @@ function Weather(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, [temperature, iconID]);
+  }, [city]);
+
+  const handleCityChange = (event) => {
+    cityValue = event.target.value;
+  };
+
+  const changeCity = () => {
+    setIsChangingCity(false);
+    if (cityValue.length > 0 && cityValue !== userParams.city) {
+      axios
+        .post(
+          "http://localhost:4200/weather-widget/change-params/",
+          { id: props.id, city: cityValue },
+          {
+            headers: { Authorization: props.user.token },
+          }
+        )
+        .then((resp) => {
+          if (resp.status === 200) {
+            setCity(cityValue);
+          }
+        });
+    }
+  };
+
+  const cityInput = () => {
+    if (!isChangingCity) {
+      return (
+        <div className="city" onClick={() => setIsChangingCity(true)}>
+          <i className="fa fa-map-marker"></i> {userParams.city}
+        </div>
+      );
+    }
+    return (
+      <div>
+        <input
+          type="text"
+          placeholder="City"
+          onBlur={changeCity}
+          onChange={handleCityChange}
+        />
+      </div>
+    );
+  };
 
   return (
     <div className="widget">
       <div className="title">
-        <div className="city"><i className="fa fa-map-marker"></i> {userParams.city}</div>
+        <div className="city">{cityInput()}</div>
       </div>
       <div className="weather-widget">
         <div className="infos">

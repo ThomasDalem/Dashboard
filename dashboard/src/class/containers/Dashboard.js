@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter, Switch, Route} from 'react-router-dom';
+import axios from 'axios';
+import {connect} from "react-redux";
 
 import Navbar from '../components/Navbar';
 import ChooseWidgets from '../components/ChooseWidgets';
@@ -13,8 +15,25 @@ class Dashboard extends Component {
     super(props);
 
     this.state = {
-      widgets: [<Weather />]
+      widgets: []
     };
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:4200/widgets', {headers: { Authorization: this.props.user.token }})
+      .then((resp) => {
+        if (resp.status === 200) {
+          const receivedWidgets = [];
+          let i = 0;
+          if (resp.data.weatherWidgets) {
+            for (let widget of resp.data.weatherWidgets) {
+              receivedWidgets.push(<Weather key={i} id={widget.id} />);
+              i++;
+            }
+          }
+          this.setState({widgets: receivedWidgets});
+        }
+      });
   }
 
   render() {
@@ -40,4 +59,10 @@ class Dashboard extends Component {
   }
 }
 
-export default withRouter(Dashboard);
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(Dashboard));
