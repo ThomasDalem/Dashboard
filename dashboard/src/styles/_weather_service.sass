@@ -1,8 +1,32 @@
-.weather-widget
+.widget
     background-color: $card-color
     color: white
-    padding: 20px
     border-radius: 3px
+    padding: 15px
+    .title
+        color: #b4b4b4
+        .city
+            font-size: 18px
+            text-align: center
+    .weather-widget
+        text-transform: capitalize
+        text-align: center
+        font-family: 'Open Sans', sans-serif
+        display: flex
+        justify-content: space-evenly
+        .temp
+            font-weight: bold
+            font-size: 32px
+        .humidity
+            font-size: 14px
+        .weather-text
+            font-size: 22px
+            font-weight: bold
+
+.icon
+    margin-top: -8px
+    margin-right: -10px
+    margin-left: 10px
 
 .weather-forecast-widget
     background-color: $card-color

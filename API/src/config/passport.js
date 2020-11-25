@@ -16,7 +16,6 @@ const options = {
 module.exports = (passport) => {
   passport.use(
     new JwtStrategy(options, (payload, done) => {
-      console.log(payload);
       db.user
         .findOne({ where: { id: payload.sub } })
         .then((user) => {
