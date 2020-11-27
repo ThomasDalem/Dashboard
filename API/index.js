@@ -18,6 +18,10 @@ app.use(passport.initialize());
 app.use("/user", require("./src/routes/UserRoutes"));
 app.use("/weather-widget", require("./src/routes/WeatherWidgetRoutes"));
 app.use("/widgets", require("./src/routes/WidgetsRoutes"));
+app.use('/money-converter-widget', require('./src/routes/MoneyConverterWidgetRoutes'));
+app.use('/github-infos-user-widget', require('./src/routes/GithubInfosUserWidgetRoutes'));
+app.use('/github-search-user-widget', require('./src/routes/GithubSerchUserWidgetRoutes'));
+app.use('/github-user-repos-widget', require('./src/routes/GithubUserReposWidgetRoutes'));
 
 app.get("/", (req, res) => {
   res.send("bonjour");

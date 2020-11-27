@@ -2,6 +2,7 @@ const db = require("../models");
 const generateJWT = require("../config/generateJWT");
 
 exports.registerUser = async (req, res) => {
+  console.log(req.body);
   if (!req.body.username || !req.body.password) {
     res.status(400).end();
     return;

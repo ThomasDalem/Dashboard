@@ -1,13 +1,13 @@
 const db = require("../models");
 
 exports.addWidget = async (req, res) => {
-  const { city, postalCode, celcius } = req.body;
-  const widget = await db.weather_widget
+  const { baseMoney, amount, convertToMoney } = req.body;
+  const widget = await db.money_converter_widget
     .create({
       id_user: req.user.id,
-      city: city,
-      postal_code: postalCode,
-      celcius: celcius,
+      base_money: baseMoney,
+      amount: amount,
+      convert_to_money: convertToMoney,
     })
     .catch((err) => {
       console.error(err);
@@ -18,8 +18,8 @@ exports.addWidget = async (req, res) => {
 };
 
 exports.changeParams = async (req, res) => {
-  const { id, city, postalCode, celcius } = req.body;
-  const widget = await db.weather_widget.findOne({
+  const { id, baseMoney, amount, convertToMoney } = req.body;
+  const widget = await db.money_converter_widget.findOne({
     where: { id_user: req.user.id, id: id },
   });
 
@@ -27,15 +27,15 @@ exports.changeParams = async (req, res) => {
     res.status(404).end();
     return;
   }
-  widget.city = city ? city : widget.city;
-  widget.postal_code = postalCode ? postalCode : widget.postal_code;
-  widget.celcius = celcius ? celcius : widget.celcius;
+  widget.base_money = baseMoney ? baseMoney : widget.base_money;
+  widget.amount = amount ? amount : widget.amount;
+  widget.convert_to_money = convertToMoney ? convertToMoney : widget.convert_to_money;
   await widget.save();
   res.json({ widget: widget.toJSON() });
 };
 
 exports.getWidgets = async (req, res) => {
-  const widgets = await db.weather_widget.findAll({
+  const widgets = await db.money_converter_widget.findAll({
     where: { id_user: req.user.id },
   });
 

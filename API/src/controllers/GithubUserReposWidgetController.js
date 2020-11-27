@@ -1,13 +1,11 @@
 const db = require("../models");
 
 exports.addWidget = async (req, res) => {
-  const { city, postalCode, celcius } = req.body;
-  const widget = await db.weather_widget
+  const { username } = req.body;
+  const widget = await db.github_user_repos_widget
     .create({
       id_user: req.user.id,
-      city: city,
-      postal_code: postalCode,
-      celcius: celcius,
+      username: username
     })
     .catch((err) => {
       console.error(err);
@@ -18,8 +16,8 @@ exports.addWidget = async (req, res) => {
 };
 
 exports.changeParams = async (req, res) => {
-  const { id, city, postalCode, celcius } = req.body;
-  const widget = await db.weather_widget.findOne({
+  const { id, username } = req.body;
+  const widget = await db.github_user_repos_widget.findOne({
     where: { id_user: req.user.id, id: id },
   });
 
@@ -27,15 +25,13 @@ exports.changeParams = async (req, res) => {
     res.status(404).end();
     return;
   }
-  widget.city = city ? city : widget.city;
-  widget.postal_code = postalCode ? postalCode : widget.postal_code;
-  widget.celcius = celcius ? celcius : widget.celcius;
+  widget.username = username ? username : widget.username;
   await widget.save();
   res.json({ widget: widget.toJSON() });
 };
 
 exports.getWidgets = async (req, res) => {
-  const widgets = await db.weather_widget.findAll({
+  const widgets = await db.github_user_repos_widget.findAll({
     where: { id_user: req.user.id },
   });
 
